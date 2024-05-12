@@ -15,18 +15,12 @@ def charCount(text, spaces):
     else:
         if ' ' in text:
             removed = text.replace(' ', '')
-            char_count = len(text)
+            char_count = len(removed) # Fixed the bug when it counts the text chararcter count and not the removed character count
             return char_count
         else:
             errorHandling("No Spaces", "2", "The string doesn't have spaces.", "Change the spaces variable to ''True''.")
 
-def uppercase(text):
-    uppercased = text.upper()
-    return uppercased
-
-def lowercase(text):
-    lowercased = text.lower()
-    return lowercased
+# Deleted the uppercase and lowercase functions
 
 def removeSpaces(text):
     if ' ' in text:
@@ -61,9 +55,16 @@ def checkChar(char, text):
     else:
         return False
 
-def isPalindrome(text):
+def isPalindrome(text, spacesCount):
     reversed = text[::-1]
-    if text == reversed:
-        return True
+    if spacesCount != True:
+        if text == reversed:
+            return True
+        else:
+            return False
     else:
-        return False
+        removed = text.replace(' ', '')
+        if removed == reversed:
+            return True
+        else:
+            return False # Added a new function in the isPalindrome() function - with spaces
